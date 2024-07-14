@@ -5,10 +5,16 @@
         <group>
             <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmCadastroCliente.java</file>
             <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmUsarioLogin.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmCadastroAtendente.java</file>
+            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/dao/ClienteDAO.java</file>
+            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmListaCliente.java</file>
+            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmListaAtendente.java</file>
             <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmCadastroServico.java</file>
+            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/apoio/ConexaoBD.java</file>
+            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/petshop/PetShop.java</file>
             <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmEntrada.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmCadastroAnimal.java</file>
+            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmCadastroAtendente.java</file>
+            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/entidade/Cliente.java</file>
+            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmListaServico.java</file>
         </group>
     </open-files>
 </project-private>

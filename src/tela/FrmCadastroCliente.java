@@ -4,12 +4,17 @@
  */
 package tela;
 
+import dao.ClienteDAO;
+import entidade.Cliente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
  */
 public class FrmCadastroCliente extends javax.swing.JFrame {
 
+    int idCliente = 0;
     /**
      * Creates new form FrmCadastroCliente
      */
@@ -32,15 +37,15 @@ public class FrmCadastroCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        tfdNomeCliente = new javax.swing.JTextField();
+        tfdEndCliente = new javax.swing.JTextField();
+        tfdTelfCliente = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        tfdCPFCliente = new javax.swing.JTextField();
+        btnSalvat = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        tfdNomePet = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,11 +79,14 @@ public class FrmCadastroCliente extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("TELEFONE");
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
+        tfdNomeCliente.setBackground(new java.awt.Color(0, 0, 0));
+        tfdNomeCliente.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTextField2.setBackground(new java.awt.Color(0, 0, 0));
+        tfdEndCliente.setBackground(new java.awt.Color(0, 0, 0));
+        tfdEndCliente.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTextField3.setBackground(new java.awt.Color(0, 0, 0));
+        tfdTelfCliente.setBackground(new java.awt.Color(0, 0, 0));
+        tfdTelfCliente.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tela/logo.jpg"))); // NOI18N
         jLabel7.setText("jLabel7");
@@ -86,17 +94,24 @@ public class FrmCadastroCliente extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("CPF");
 
-        jTextField4.setBackground(new java.awt.Color(0, 0, 0));
+        tfdCPFCliente.setBackground(new java.awt.Color(0, 0, 0));
+        tfdCPFCliente.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("INSERIR");
+        btnSalvat.setBackground(new java.awt.Color(0, 0, 0));
+        btnSalvat.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        btnSalvat.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvat.setText("INSERIR");
+        btnSalvat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvatActionPerformed(evt);
+            }
+        });
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("NOME PET");
 
-        jTextField5.setBackground(new java.awt.Color(0, 0, 0));
+        tfdNomePet.setBackground(new java.awt.Color(0, 0, 0));
+        tfdNomePet.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,11 +135,11 @@ public class FrmCadastroCliente extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5))))
+                            .addComponent(tfdTelfCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                            .addComponent(tfdEndCliente)
+                            .addComponent(tfdNomeCliente)
+                            .addComponent(tfdCPFCliente)
+                            .addComponent(tfdNomePet))))
                 .addContainerGap(115, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -135,7 +150,7 @@ public class FrmCadastroCliente extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnSalvat)
                         .addGap(117, 117, 117))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -145,27 +160,27 @@ public class FrmCadastroCliente extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfdNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfdEndCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfdTelfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfdCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfdNomePet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnSalvat)
                     .addComponent(jLabel7))
                 .addGap(33, 33, 33)
                 .addComponent(btnVoltar)
@@ -190,6 +205,62 @@ public class FrmCadastroCliente extends javax.swing.JFrame {
         //dispose
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnSalvatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvatActionPerformed
+        // salvando
+        String nomeCliente = tfdNomeCliente.getText();
+        String telefoneCliente = tfdTelfCliente.getText();
+        String enderecoCliente = tfdEndCliente.getText();
+        String cpfCliente = tfdCPFCliente.getText();
+        String nomepetCliente = tfdNomePet.getText();
+        
+        //criacao objeto fornecedor
+        Cliente cliente = new Cliente();
+        cliente.setId(idCliente);
+        cliente.setNome(nomeCliente);
+        cliente.setTelefone(telefoneCliente);
+        cliente.setEndereco(enderecoCliente);
+        cliente.setCpf(cpfCliente);
+        
+        //criacao objeto fornecedorDAO
+        ClienteDAO clienteDAO = new ClienteDAO();
+        
+        if (idCliente ==0){    //representa uma insercao
+        
+        if (clienteDAO.salvar(cliente) == null){
+            tfdNomeCliente.setText("");
+            tfdTelfCliente.setText("");
+            tfdEndCliente.setText("");
+            tfdCPFCliente.setText("");
+            tfdNomePet.setText("");
+            
+            JOptionPane.showMessageDialog(this, "Registro SALVO com SUCESSO!");
+            
+            tfdNomeCliente.requestFocus();
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "PROBLEMAS ao cadastrar!");
+    }
+        }
+        
+        else{
+            if (clienteDAO.atualizar(cliente) == null){
+            tfdNomeCliente.setText("");
+            tfdTelfCliente.setText("");
+            tfdEndCliente.setText("");
+            tfdCPFCliente.setText("");
+            tfdNomePet.setText("");
+            
+            JOptionPane.showMessageDialog(this, "Registro SALVO com SUCESSO!");
+            
+            tfdNomeCliente.requestFocus();
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "PROBLEMAS ao cadastrar!");
+    } 
+        }
+        idCliente = 0;
+    }//GEN-LAST:event_btnSalvatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,8 +298,8 @@ public class FrmCadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalvat;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -237,10 +308,10 @@ public class FrmCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField tfdCPFCliente;
+    private javax.swing.JTextField tfdEndCliente;
+    private javax.swing.JTextField tfdNomeCliente;
+    private javax.swing.JTextField tfdNomePet;
+    private javax.swing.JTextField tfdTelfCliente;
     // End of variables declaration//GEN-END:variables
 }

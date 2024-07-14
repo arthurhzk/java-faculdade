@@ -30,8 +30,6 @@ public class FrmListaAtendente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAtendente = new javax.swing.JTable();
         btnVoltar = new javax.swing.JButton();
-        btnSalva = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         tfdPesquisaAtendente = new javax.swing.JTextField();
@@ -68,16 +66,6 @@ public class FrmListaAtendente extends javax.swing.JFrame {
             }
         });
 
-        btnSalva.setBackground(new java.awt.Color(0, 0, 0));
-        btnSalva.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        btnSalva.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalva.setText("salvar");
-
-        btnEditar.setBackground(new java.awt.Color(0, 0, 0));
-        btnEditar.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("EDITAR");
-
         btnExcluir.setBackground(new java.awt.Color(0, 0, 0));
         btnExcluir.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
@@ -93,6 +81,11 @@ public class FrmListaAtendente extends javax.swing.JFrame {
         btnPesquisar.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         btnPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         btnPesquisar.setText("pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -120,11 +113,7 @@ public class FrmListaAtendente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnExcluir)
-                                .addGap(37, 37, 37)
-                                .addComponent(btnEditar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSalva)
-                                .addGap(48, 48, 48)
                                 .addComponent(btnVoltar))
                             .addComponent(jScrollPane1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -150,8 +139,6 @@ public class FrmListaAtendente extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
-                    .addComponent(btnSalva)
-                    .addComponent(btnEditar)
                     .addComponent(btnExcluir))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3)
@@ -176,6 +163,11 @@ public class FrmListaAtendente extends javax.swing.JFrame {
         //dispose menu principal
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,10 +206,8 @@ public class FrmListaAtendente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton btnSalva;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
