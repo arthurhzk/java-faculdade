@@ -1,0 +1,27 @@
+-- 
+create database petshop;
+--
+create table cliente (
+	id serial not null,
+	nome varchar (50),
+	endereco varchar (100),
+	telefone varchar (50),
+	cpf varchar (50),
+	pet varchar (50),
+	primary key (id)	
+);
+--
+create table atendente (
+	id serial not null,
+	nome varchar (50),
+	usuario varchar (50),
+	cargo varchar (50),
+	primary key (id)
+);
+--
+create table servico (
+	id serial not null,
+	nome varchar (50),
+	preço decimal (10,2),
+	primary key (id)	
+);
