@@ -4,12 +4,17 @@
  */
 package tela;
 
+import dao.AtendenteDAO;
+import dao.ClienteDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Eduardo
  */
 public class FrmListaAtendente extends javax.swing.JFrame {
 
+    int idAtendente;
     /**
      * Creates new form FrmListaProduto
      */
@@ -42,7 +47,7 @@ public class FrmListaAtendente extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         tblAtendente.setBackground(new java.awt.Color(0, 0, 0));
-        tblAtendente.setForeground(new java.awt.Color(0, 0, 0));
+        tblAtendente.setForeground(new java.awt.Color(255, 255, 255));
         tblAtendente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -70,12 +75,18 @@ public class FrmListaAtendente extends javax.swing.JFrame {
         btnExcluir.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("BUSCA");
 
         tfdPesquisaAtendente.setBackground(new java.awt.Color(0, 0, 0));
+        tfdPesquisaAtendente.setForeground(new java.awt.Color(255, 255, 255));
 
         btnPesquisar.setBackground(new java.awt.Color(0, 0, 0));
         btnPesquisar.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
@@ -166,8 +177,25 @@ public class FrmListaAtendente extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
-        
+                new AtendenteDAO().popularTabela(tblAtendente, tfdPesquisaAtendente.getText());     
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        String idTabela = String.valueOf(tblAtendente.getValueAt(tblAtendente.getSelectedRow(), 0));
+        idAtendente = Integer.parseInt(idTabela);
+        
+        if (new ClienteDAO().excluir(idAtendente) == null){
+            JOptionPane.showMessageDialog(this, "Registro excluído com sucesso!");
+            
+            new ClienteDAO().popularTabela(tblAtendente, "");
+            
+        } else{
+            JOptionPane.showMessageDialog(this, "Problemas ao excluir registro!");
+        }
+        
+        idAtendente = 0;
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments

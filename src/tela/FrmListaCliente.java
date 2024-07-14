@@ -86,6 +86,7 @@ public class FrmListaCliente extends javax.swing.JFrame {
         jLabel1.setText("BUSCA");
 
         tfdPesquisaCliente.setBackground(new java.awt.Color(0, 0, 0));
+        tfdPesquisaCliente.setForeground(new java.awt.Color(255, 255, 255));
 
         btnPesquisar.setBackground(new java.awt.Color(0, 0, 0));
         btnPesquisar.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N

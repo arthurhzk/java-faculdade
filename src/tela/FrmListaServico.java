@@ -4,12 +4,17 @@
  */
 package tela;
 
+import dao.ClienteDAO;
+import dao.ServicoDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Eduardo
  */
 public class FrmListaServico extends javax.swing.JFrame {
 
+    int idServico = 0;
     /**
      * Creates new form FrmListaProduto
      */
@@ -28,13 +33,11 @@ public class FrmListaServico extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblAtendente = new javax.swing.JTable();
+        tblServico = new javax.swing.JTable();
         btnVoltar = new javax.swing.JButton();
-        btnSalva = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        tfdPesquisaAtendente = new javax.swing.JTextField();
+        tfdPesquisaServico = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -43,9 +46,9 @@ public class FrmListaServico extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblAtendente.setBackground(new java.awt.Color(0, 0, 0));
-        tblAtendente.setForeground(new java.awt.Color(0, 0, 0));
-        tblAtendente.setModel(new javax.swing.table.DefaultTableModel(
+        tblServico.setBackground(new java.awt.Color(0, 0, 0));
+        tblServico.setForeground(new java.awt.Color(255, 255, 255));
+        tblServico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -56,7 +59,7 @@ public class FrmListaServico extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblAtendente);
+        jScrollPane1.setViewportView(tblServico);
 
         btnVoltar.setBackground(new java.awt.Color(0, 0, 0));
         btnVoltar.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
@@ -68,35 +71,36 @@ public class FrmListaServico extends javax.swing.JFrame {
             }
         });
 
-        btnSalva.setBackground(new java.awt.Color(0, 0, 0));
-        btnSalva.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        btnSalva.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalva.setText("salvar");
-
-        btnEditar.setBackground(new java.awt.Color(0, 0, 0));
-        btnEditar.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("EDITAR");
-
         btnExcluir.setBackground(new java.awt.Color(0, 0, 0));
         btnExcluir.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("BUSCA");
 
-        tfdPesquisaAtendente.setBackground(new java.awt.Color(0, 0, 0));
+        tfdPesquisaServico.setBackground(new java.awt.Color(0, 0, 0));
+        tfdPesquisaServico.setForeground(new java.awt.Color(255, 255, 255));
 
         btnPesquisar.setBackground(new java.awt.Color(0, 0, 0));
         btnPesquisar.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         btnPesquisar.setForeground(new java.awt.Color(255, 255, 255));
         btnPesquisar.setText("pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("ATENDENTES");
+        jLabel2.setText("SERVIÇOS");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tela/logo.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -109,7 +113,7 @@ public class FrmListaServico extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(tfdPesquisaAtendente, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfdPesquisaServico, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(btnPesquisar)
                 .addGap(19, 19, 19))
@@ -120,11 +124,7 @@ public class FrmListaServico extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnExcluir)
-                                .addGap(37, 37, 37)
-                                .addComponent(btnEditar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSalva)
-                                .addGap(48, 48, 48)
                                 .addComponent(btnVoltar))
                             .addComponent(jScrollPane1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -143,15 +143,13 @@ public class FrmListaServico extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tfdPesquisaAtendente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfdPesquisaServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
-                    .addComponent(btnSalva)
-                    .addComponent(btnEditar)
                     .addComponent(btnExcluir))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3)
@@ -176,6 +174,28 @@ public class FrmListaServico extends javax.swing.JFrame {
         //dispose menu principal
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+        new ServicoDAO().popularTabela(tblServico, tfdPesquisaServico.getText());
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        String idTabela = String.valueOf(tblServico.getValueAt(tblServico.getSelectedRow(), 0));
+        idServico = Integer.parseInt(idTabela);
+        
+        if (new ClienteDAO().excluir(idServico) == null){
+            JOptionPane.showMessageDialog(this, "Registro excluído com sucesso!");
+            
+            new ClienteDAO().popularTabela(tblServico, "");
+            
+        } else{
+            JOptionPane.showMessageDialog(this, "Problemas ao excluir registro!");
+        }
+        
+        idServico = 0;
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,17 +240,15 @@ public class FrmListaServico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton btnSalva;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblAtendente;
-    private javax.swing.JTextField tfdPesquisaAtendente;
+    private javax.swing.JTable tblServico;
+    private javax.swing.JTextField tfdPesquisaServico;
     // End of variables declaration//GEN-END:variables
 }
