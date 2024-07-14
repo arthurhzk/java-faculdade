@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package entidade;
-
+import java.util.List;
 /**
  *
  * @author Eduardo
@@ -14,6 +14,7 @@ public class Atendente {
     private String nome;
     private String usuario;
     private String cargo;
+    private List<Servico> servicos;
 
     public int getId() {
         return id;
@@ -47,5 +48,11 @@ public class Atendente {
         this.cargo = cargo;
     }
     
-    
+      public List<Servico> getServicos() {
+        return servicos;
+    }
+
+    public void setServicos(List<Servico> servicos) {
+        this.servicos = servicos;
+    }
 }

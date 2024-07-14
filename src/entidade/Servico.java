@@ -13,7 +13,7 @@ public class Servico {
     private int id;
     private String nome;
     private float preco;
-
+    private Atendente atendente;
     public int getId() {
         return id;
     }
@@ -37,8 +37,18 @@ public class Servico {
     public void setPreco(float preco) {
         this.preco = preco;
     }
-
+       public Atendente getAtendente() {
+        return atendente;
     }
+
+    public void setAtendente(Atendente atendente) {
+        this.atendente = atendente;
+    }
+   }
+    
+
+
+
     
 
 

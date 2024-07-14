@@ -2,19 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmCadastroCliente.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmUsarioLogin.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/dao/ClienteDAO.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmListaCliente.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmListaAtendente.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmCadastroServico.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/apoio/ConexaoBD.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/petshop/PetShop.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmEntrada.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmCadastroAtendente.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/entidade/Cliente.java</file>
-            <file>file:/C:/Users/Eduardo/Desktop/EMV/ADS/java-faculdade/src/tela/FrmListaServico.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

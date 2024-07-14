@@ -26,11 +26,12 @@ public class ServicoDAO implements IDAOT<Servico> {
         try{
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
             
-            String sql="insert into servico (id, nome, preco) "
+            String sql="insert into servico (id, nome, preco, atendente_id) "
                     + "values"
                     + "(default, "
-                    + "'" + o.getNome()+ "', "
-                    + "'" + o.getPreco()+ "') ";
+                    + "'" + o.getNome() + "', "
+                    + "'" + o.getPreco() + "', "
+                    + o.getAtendente().getId() + ")";
             
             int retorno = st.executeUpdate(sql);
             return null;
@@ -88,11 +89,11 @@ public class ServicoDAO implements IDAOT<Servico> {
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[3];
+        Object[] cabecalho = new Object[4];
         cabecalho[0] = "Id";
         cabecalho[1] = "Nome";
         cabecalho[2] = "Preco";
-
+        cabecalho[3] = "Atendente";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
@@ -104,7 +105,7 @@ public class ServicoDAO implements IDAOT<Servico> {
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][3];
+            dadosTabela = new Object[resultadoQ.getInt(1)][4];
 
         } catch (Exception e) {
             System.out.println("Erro ao CONSULTAR SERVIÇO: " + e);
@@ -115,24 +116,19 @@ public class ServicoDAO implements IDAOT<Servico> {
         // efetua consulta na tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT * "
-                    + "FROM servico "
+                    + "SELECT s.id, s.nome, s.preco, a.nome AS atendente_nome "
+                    + "FROM servico s "
+                    + "JOIN atendente a ON s.atendente_id = a.id "
                     + "WHERE "
-                    + "nome ILIKE '%" + criterio + "%' order by id");
+                    + "s.nome ILIKE '%" + criterio + "%' order by s.id");
 
             while (resultadoQ.next()) {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
                 dadosTabela[lin][1] = resultadoQ.getString("nome");
-                dadosTabela[lin][2] = resultadoQ.getString("preco");
+                dadosTabela[lin][2] = resultadoQ.getFloat("preco");
+                dadosTabela[lin][3] = resultadoQ.getString("atendente_nome");
 
-
-                // caso a coluna precise exibir uma imagem
-//                if (resultadoQ.getBoolean("Situacao")) {
-//                    dadosTabela[lin][2] = new ImageIcon(getClass().getClassLoader().getResource("Interface/imagens/status_ativo.png"));
-//                } else {
-//                    dadosTabela[lin][2] = new ImageIcon(getClass().getClassLoader().getResource("Interface/imagens/status_inativo.png"));
-//                }
                 lin++;
             }
         } catch (Exception e) {
@@ -146,21 +142,13 @@ public class ServicoDAO implements IDAOT<Servico> {
             // quando retorno for FALSE, a tabela nao é editavel
             public boolean isCellEditable(int row, int column) {
                 return false;
-                /*  
-                 if (column == 3) {  // apenas a coluna 3 sera editavel
-                 return true;
-                 } else {
-                 return false;
-                 }
-                 */
             }
 
             // alteracao no metodo que determina a coluna em que o objeto ImageIcon devera aparecer
             @Override
             public Class getColumnClass(int column) {
-
                 if (column == 2) {
-//                    return ImageIcon.class;
+                    return Float.class;
                 }
                 return Object.class;
             }
@@ -180,28 +168,13 @@ public class ServicoDAO implements IDAOT<Servico> {
                 case 1:
                     column.setPreferredWidth(140);
                     break;
-//                case 2:
-//                    column.setPreferredWidth(14);
-//                    break;
+                case 2:
+                    column.setPreferredWidth(50);
+                    break;
+                case 3:
+                    column.setPreferredWidth(100);
+                    break;
             }
         }
-        // renderizacao das linhas da tabela = mudar a cor
-//        jTable1.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-//
-//            @Override
-//            public Component getTableCellRendererComponent(JTable table, Object value,
-//                    boolean isSelected, boolean hasFocus, int row, int column) {
-//                super.getTableCellRendererComponent(table, value, isSelected,
-//                        hasFocus, row, column);
-//                if (row % 2 == 0) {
-//                    setBackground(Color.GREEN);
-//                } else {
-//                    setBackground(Color.LIGHT_GRAY);
-//                }
-//                return this;
-//            }
-//        });
-    
     }
-
 }
