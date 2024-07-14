@@ -54,7 +54,7 @@ public class FrmCadastroServico extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("CADSTRO DE SERVIÇOs");
+        jLabel1.setText("CADaSTRO DE SERVIÇOs");
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("NOME");
@@ -154,8 +154,8 @@ public class FrmCadastroServico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //sair
-        System.exit(0);
+        //voltar
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

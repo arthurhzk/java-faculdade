@@ -31,12 +31,11 @@ public class FrmEntrada extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnCliente = new javax.swing.JButton();
         btnProdutos = new javax.swing.JButton();
-        btnVendas = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnCadastroServico = new javax.swing.JButton();
+        btnListaAtendente = new javax.swing.JButton();
+        btnListarCliente = new javax.swing.JButton();
+        btnListaServivo = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,37 +68,52 @@ public class FrmEntrada extends javax.swing.JFrame {
         btnProdutos.setBackground(new java.awt.Color(0, 0, 0));
         btnProdutos.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         btnProdutos.setForeground(new java.awt.Color(255, 255, 255));
-        btnProdutos.setText("CASTRO PRODUTOS");
+        btnProdutos.setText("CADASTRO ATENDENTE");
         btnProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProdutosActionPerformed(evt);
             }
         });
 
-        btnVendas.setBackground(new java.awt.Color(0, 0, 0));
-        btnVendas.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
-        btnVendas.setForeground(new java.awt.Color(255, 255, 255));
-        btnVendas.setText("SERVIÇOS");
-        btnVendas.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastroServico.setBackground(new java.awt.Color(0, 0, 0));
+        btnCadastroServico.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        btnCadastroServico.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastroServico.setText("CADASTRAR SERVIÇOS");
+        btnCadastroServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVendasActionPerformed(evt);
+                btnCadastroServicoActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("LISTAR PRODUTOS");
+        btnListaAtendente.setBackground(new java.awt.Color(0, 0, 0));
+        btnListaAtendente.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        btnListaAtendente.setForeground(new java.awt.Color(255, 255, 255));
+        btnListaAtendente.setText("LISTAR Atendente");
+        btnListaAtendente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaAtendenteActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("LISTAR CLIENTES");
+        btnListarCliente.setBackground(new java.awt.Color(0, 0, 0));
+        btnListarCliente.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        btnListarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnListarCliente.setText("LISTAR CLIENTES");
+        btnListarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarClienteActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("LISTAR SERVIÇOS");
+        btnListaServivo.setBackground(new java.awt.Color(0, 0, 0));
+        btnListaServivo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        btnListaServivo.setForeground(new java.awt.Color(255, 255, 255));
+        btnListaServivo.setText("LISTAR SERVIÇOS");
+        btnListaServivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaServivoActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
@@ -111,11 +125,6 @@ public class FrmEntrada extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(0, 0, 0));
-        jButton6.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("CADASTRAR FUNCIONARIO");
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tela/logo.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
 
@@ -126,19 +135,16 @@ public class FrmEntrada extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnListaServivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListaAtendente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProdutos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                    .addComponent(btnVendas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCadastroServico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(66, 66, 66))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +156,10 @@ public class FrmEntrada extends javax.swing.JFrame {
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(212, 212, 212)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,19 +173,17 @@ public class FrmEntrada extends javax.swing.JFrame {
                     .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCadastroServico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                    .addComponent(btnListaAtendente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListaServivo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel2)
-                .addGap(50, 50, 50)
+                .addGap(33, 33, 33)
                 .addComponent(btnSair)
                 .addGap(46, 46, 46))
         );
@@ -205,10 +212,10 @@ public class FrmEntrada extends javax.swing.JFrame {
         new FrmCadastroAtendente().setVisible(true);
     }//GEN-LAST:event_btnProdutosActionPerformed
 
-    private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
+    private void btnCadastroServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroServicoActionPerformed
         //abre tela sevico 
         new FrmCadastroServico().setVisible(true);
-    }//GEN-LAST:event_btnVendasActionPerformed
+    }//GEN-LAST:event_btnCadastroServicoActionPerformed
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         //abre tela cadastro cliente
@@ -219,6 +226,21 @@ public class FrmEntrada extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnListarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarClienteActionPerformed
+        //abre tela cadastro cliente
+        new FrmListaCliente().setVisible(true);
+    }//GEN-LAST:event_btnListarClienteActionPerformed
+
+    private void btnListaServivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaServivoActionPerformed
+        //abre tela cadastro servico
+        new FrmListaServico().setVisible(true);
+    }//GEN-LAST:event_btnListaServivoActionPerformed
+
+    private void btnListaAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaAtendenteActionPerformed
+        //abre tela lista atendente 
+        new FrmListaAtendente().setVisible(true);
+    }//GEN-LAST:event_btnListaAtendenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,15 +278,14 @@ public class FrmEntrada extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastroServico;
     private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnListaAtendente;
+    private javax.swing.JButton btnListaServivo;
+    private javax.swing.JButton btnListarCliente;
     private javax.swing.JButton btnProdutos;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnVendas;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
